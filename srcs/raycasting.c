@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 21:33:33 by viroques          #+#    #+#             */
+/*   Updated: 2020/10/30 21:33:34 by viroques         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 static void		ft_calcul_ray_position_box(t_vecteur *vec, int x, t_player *player, t_mlx *mlx)
