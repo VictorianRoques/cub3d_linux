@@ -39,4 +39,5 @@ int			error_custom(char *msg, int ret, char *stock)
 	free(stock);
 	write(2, "Error\n", 7);
 	write(2, msg, ft_strlen(msg));
+	return (ret);
 }
