@@ -53,8 +53,8 @@ static int			ft_get_resolution(char **values, char *hash, t_mlx *mlx)
 		hash[ft_hash(values[0])] = 1;
 		if (!ft_str_is_digit(values[1]) || !ft_str_is_digit(values[2]))
 			return (error("Resolution values must be a digit\n", -1));
-		mlx->win_width = ft_atoi(values[1]);
-		mlx->win_height = ft_atoi(values[2]);
+		mlx->win_width = long_atoi(values[1]);
+		mlx->win_height = long_atoi(values[2]);
 		if (mlx->win_width < 0 || mlx->win_height < 0)
 			return (error("Negative values for resolution\n", -1));
 		mlx_get_screen_size(mlx->mlx_ptr, &screen_width, &screen_height);

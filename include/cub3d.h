@@ -20,6 +20,7 @@
 # include "../mlx_linux/mlx.h"
 # include "../libft/libft.h"
 # include <fcntl.h>
+# include <limits.h>
 
 # define KEY_A 97
 # define KEY_S 115
@@ -201,5 +202,6 @@ int					ft_check_map(t_mlx *mlx, char **file, char **file_n);
 int					define_min_len(char **file, int i, t_mlx *mlx);
 void				free_map_world(t_mlx *mlx);
 int					error_custom(char *msg, int ret, char *stock);
+int					long_atoi(const char *nptr);
 
 #endif

@@ -22,6 +22,8 @@ static char		*read_file(char *stock, char *path)
 	if (!(stock = malloc(sizeof(char))))
 		return (error_char("Malloc failed in read file\n", NULL));
 	stock[0] = '\0';
+	if ((fd = open(path, __O_DIRECTORY) != -1))
+		return (error_char("file .cub is a directory\n", NULL));
 	if ((fd = open(path, O_RDONLY)) < 0)
 		return (error_char("Invalid path can't read the file\n", NULL));
 	while ((ret = read(fd, buff, 4096)))

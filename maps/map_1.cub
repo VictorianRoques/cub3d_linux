@@ -1,4 +1,4 @@
-R 1000 600
+R 21474836488 21474836488
 NO textures/wood.xpm
 SO ./textures/stone.xpm
 WE ./textures/metal.xpm
