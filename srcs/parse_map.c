@@ -49,7 +49,7 @@ int				parsing_map(t_mlx *mlx, char *path)
 	if (!(stock = read_file(stock, path)))
 		return (-1);
 	if (!(mlx->file = ft_split(stock, '\n')))
-		return (error("Maloc failed in ft_split in ft_read_map\n", -1));
+		return (error_custom("Maloc failed", -1, stock));
 	if (!(mlx->file_n = ft_split_sep(stock, '\n')))
 	{
 		free(stock);

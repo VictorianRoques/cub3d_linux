@@ -67,8 +67,8 @@ static void			info_sprite(t_mlx *mlx, t_player *p, t_info_s *info, int i)
 	(p->dir_y * info->sprite_x - p->dir_x * info->sprite_y);
 	info->transform_y = info->inv_det *
 	(-p->plan_y * info->sprite_x + p->plan_x * info->sprite_y);
-	info->text_width = mlx->texture[4]->width;
-	info->text_height = mlx->texture[4]->height;
+	info->text_width = mlx->texture[4].width;
+	info->text_height = mlx->texture[4].height;
 	info->v_move_screen = (int)(info->text_height / info->transform_y);
 	info->sprite_screen_x = (int)(mlx->win_width / 2 *
 	(1 + info->transform_x / info->transform_y));
@@ -87,7 +87,7 @@ static void			screen_sprite(t_mlx *mlx, t_info_s *info, int y, int stripe)
 	d = (y - info->v_move_screen) * 256 - mlx->win_height
 	* 128 + info->sprite_height * 128;
 	tex_y = ((d * info->text_height) / info->sprite_height) / 256;
-	color = mlx->texture[4]->data[info->text_width * tex_y + info->tex_x];
+	color = mlx->texture[4].data[info->text_width * tex_y + info->tex_x];
 	if ((color & 0xffffff) != 0)
 		mlx->img.data[y * mlx->win_width + stripe - 1] = color;
 }

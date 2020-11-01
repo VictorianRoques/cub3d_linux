@@ -76,6 +76,6 @@ int				screenshot(t_mlx *mlx, char *argv)
 	&mlx->img.size_l, &mlx->img.endian);
 	ft_raycasting(mlx, &mlx->vec, &mlx->player);
 	write_bmp_file(mlx);
-	free_map_world_and_text(mlx);
+	free_map_world(mlx);
 	return (0);
 }

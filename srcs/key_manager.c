@@ -102,9 +102,6 @@ int					ft_keyboard_manager(t_mlx *mlx)
 	rotate_manager(mlx);
 	ft_raycasting(mlx, &mlx->vec, &mlx->player);
 	if (mlx->keyboard[KEY_ESC])
-	{
-		mlx_destroy_window(mlx->mlx_ptr, mlx->win);
-		exit(0);
-	}
+		return (exit_game(mlx));
 	return (0);
 }

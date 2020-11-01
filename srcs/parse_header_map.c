@@ -12,7 +12,7 @@
 
 #include "../include/cub3d.h"
 
-static int				check_text(char **val, char *h, t_mlx *mlx, int *i_text)
+static int			check_text(char **val, char *h, t_mlx *mlx, int *i_text)
 {
 	if (h[ft_hash(val[0])] == 0)
 		h[ft_hash(val[0])] = 1;
@@ -22,20 +22,20 @@ static int				check_text(char **val, char *h, t_mlx *mlx, int *i_text)
 		return (error("Texture must be followed by only one path\n", -1));
 	if (!ft_strncmp(val[0], "S", 2))
 	{
-		if (!(mlx->texture[4]->img_ptr = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		val[1], &mlx->texture[4]->width, &mlx->texture[4]->height)))
+		if (!(mlx->texture[4].img_ptr = mlx_xpm_file_to_image(mlx->mlx_ptr,
+		val[1], &mlx->texture[4].width, &mlx->texture[4].height)))
 			return (error("Invalide sprite texture, impossible to read\n", -1));
-		mlx->texture[4]->data = (int *)mlx_get_data_addr(mlx->texture[4]
-		->img_ptr, &mlx->img.bpp, &mlx->img.size_l, &mlx->img.endian);
+		mlx->texture[4].data = (int *)mlx_get_data_addr(mlx->texture[4].img_ptr,
+		&mlx->img.bpp, &mlx->img.size_l, &mlx->img.endian);
 	}
 	else
 	{
-		if (!(mlx->texture[*i_text]->img_ptr = mlx_xpm_file_to_image(
-		mlx->mlx_ptr, val[1], &mlx->texture[*i_text]->width,
-		&mlx->texture[*i_text]->height)))
+		if (!(mlx->texture[*i_text].img_ptr = mlx_xpm_file_to_image(
+		mlx->mlx_ptr, val[1], &mlx->texture[*i_text].width,
+		&mlx->texture[*i_text].height)))
 			return (error("Failed to load texture\n", -1));
-		mlx->texture[*i_text]->data = (int *)mlx_get_data_addr(mlx->texture
-		[*i_text]->img_ptr, &mlx->img.bpp, &mlx->img.size_l, &mlx->img.endian);
+		mlx->texture[*i_text].data = (int *)mlx_get_data_addr(mlx->texture
+		[*i_text].img_ptr, &mlx->img.bpp, &mlx->img.size_l, &mlx->img.endian);
 		*i_text = *i_text + 1;
 	}
 	return (0);
@@ -43,6 +43,9 @@ static int				check_text(char **val, char *h, t_mlx *mlx, int *i_text)
 
 static int			ft_get_resolution(char **values, char *hash, t_mlx *mlx)
 {
+	int screen_width;
+	int screen_height;
+
 	if (!ft_compt_args(values, 3))
 		return (error("Res is follow by less or more than 2 values\n", -1));
 	if (hash[ft_hash("R")] == 0)
@@ -54,7 +57,11 @@ static int			ft_get_resolution(char **values, char *hash, t_mlx *mlx)
 		mlx->win_height = ft_atoi(values[2]);
 		if (mlx->win_width < 0 || mlx->win_height < 0)
 			return (error("Negative values for resolution\n", -1));
-		//add resolution fo screen if >
+		mlx_get_screen_size(mlx->mlx_ptr, &screen_width, &screen_height);
+		if (mlx->win_width > screen_width)
+			mlx->win_width = screen_width;
+		if (mlx->win_height > screen_height)
+			mlx->win_height = screen_height;
 	}
 	else
 		return (error("Resolution is define more than one time\n", -1));
@@ -92,8 +99,6 @@ int					parse_header_map(t_mlx *mlx, char **file, char **file_n)
 	t_header_parser parse;
 
 	ft_bzero(&parse, sizeof(t_header_parser));
-	if (ft_malloc_text(mlx) < 0)
-		return (-1);
 	while (file_n[parse.index])
 	{
 		if (!(parse.values = ft_split(file_n[parse.index], ' ')))

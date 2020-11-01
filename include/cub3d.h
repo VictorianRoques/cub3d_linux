@@ -116,12 +116,6 @@ typedef struct		s_map
 	int				**world_map;
 }					t_map;
 
-typedef struct		s_tmp_free {
-	t_img			**tmp_texture;
-	char			**tmp_file;
-
-}					t_tmp_free;
-
 typedef struct		s_mlx
 {
 	void			*mlx_ptr;
@@ -135,7 +129,7 @@ typedef struct		s_mlx
 	t_img			img;
 	t_vecteur		vec;
 	t_player		player;
-	t_img			**texture;
+	t_img			texture[5];
 	t_sprite		*sprite;
 	int				count_sprite;
 	t_map			map;
@@ -143,7 +137,6 @@ typedef struct		s_mlx
 	char			keyboard[65364];
 	char			**file;
 	char			**file_n;
-	t_tmp_free		tmp_free;
 	int				save;
 	int				check;
 }					t_mlx;
@@ -194,7 +187,6 @@ int					ft_hash(char *key);
 int					error(char *msg, int ret);
 int					error_free(char *msg, int ret, char **tab);
 char				*error_char(char *msg, char *nul);
-int					ft_malloc_text(t_mlx *mlx);
 char				**ft_split_sep(char const *s, char c);
 int					screenshot(t_mlx *mlx, char *argv);
 int					exit_game_err(t_mlx *mlx);
@@ -207,6 +199,7 @@ void				fill_map_world(t_mlx *mlx, char **file);
 int					ft_malloc_map(t_mlx *mlx, char **file);
 int					ft_check_map(t_mlx *mlx, char **file, char **file_n);
 int					define_min_len(char **file, int i, t_mlx *mlx);
-void				free_map_world_and_text(t_mlx *mlx);
+void				free_map_world(t_mlx *mlx);
+int					error_custom(char *msg, int ret, char *stock);
 
 #endif

@@ -31,7 +31,7 @@ int	main(int ac, char **argv)
 		ft_raycasting(&mlx, &mlx.vec, &mlx.player);
 		mlx_hook(mlx.win, 2, 1L << 0, key_press, &mlx);
 		mlx_hook(mlx.win, 3, 1L << 1, key_release, &mlx);
-		mlx_hook(mlx.win, 17, 1L << 17, exit_game, &mlx);
+		mlx_hook(mlx.win, 33, 1L << 17, exit_game, &mlx);
 		mlx_loop_hook(mlx.mlx_ptr, ft_keyboard_manager, &mlx);
 		mlx_loop(mlx.mlx_ptr);
 	}

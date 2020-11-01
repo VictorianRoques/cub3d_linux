@@ -29,6 +29,14 @@ char		*error_char(char *msg, char *err)
 int			error_free(char *msg, int ret, char **tab)
 {
 	ft_free_tab(tab);
+	write(2, "Error\n", 7);
 	write(2, msg, ft_strlen(msg));
 	return (ret);
+}
+
+int			error_custom(char *msg, int ret, char *stock)
+{
+	free(stock);
+	write(2, "Error\n", 7);
+	write(2, msg, ft_strlen(msg));
 }
