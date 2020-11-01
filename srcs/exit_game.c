@@ -6,7 +6,7 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 21:32:59 by viroques          #+#    #+#             */
-/*   Updated: 2020/10/30 21:33:01 by viroques         ###   ########.fr       */
+/*   Updated: 2020/10/31 20:46:58 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void		free_map_world_and_text(t_mlx *mlx)
 	free(mlx->texture);
 }
 
-int		exit_game(t_mlx *mlx)
+int			exit_game(t_mlx *mlx)
 {
 	mlx_destroy_window(mlx->mlx_ptr, mlx->win);
 	free_map_world_and_text(mlx);
 	exit(0);
 }
 
-int		exit_game_err(t_mlx *mlx)
+int			exit_game_err(t_mlx *mlx)
 {
 	free_map_world_and_text(mlx);
 	exit(0);

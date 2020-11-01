@@ -6,13 +6,13 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 21:33:43 by viroques          #+#    #+#             */
-/*   Updated: 2020/10/30 21:33:44 by viroques         ###   ########.fr       */
+/*   Updated: 2020/11/01 18:26:51 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static char	**ft_count_string(const char *s, char c)
+static char		**ft_count_string(const char *s, char c)
 {
 	int		string;
 	int		i;
@@ -31,7 +31,7 @@ static char	**ft_count_string(const char *s, char c)
 	return (tab);
 }
 
-static int	ft_count_letter(const char *s, char c, char **tab)
+static int		ft_count_letter(const char *s, char c, char **tab)
 {
 	int		i;
 	int		string;
@@ -70,20 +70,20 @@ static void		ft_fill_tab(char const *s, char c, char **tab)
 	letter = 0;
 	while (s[i])
 	{
-			tab[string][letter] = s[i];
-			letter++;
+		tab[string][letter] = s[i];
+		letter++;
 		if ((s[i + 1] == '\0' || s[i + 1] == c || s[i] == c))
 		{
 			tab[string][letter] = '\0';
 			string++;
 			letter = 0;
-		} 
+		}
 		i++;
 	}
 	tab[string] = NULL;
 }
 
-char	**ft_split_sep(char const *s, char c)
+char			**ft_split_sep(char const *s, char c)
 {
 	char	**tab;
 
