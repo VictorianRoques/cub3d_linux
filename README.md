@@ -5,9 +5,9 @@ This project is inspired by the world-famous eponymous 90’s game, which was th
 
 # Building Mandatory part:
 
-$> make
+> $> make
 
-$> ./cub3d maps/map_1.cub
+> $> ./cub3d maps/map_1.cub
 
 Editing map : You can change the entire game environment in maps/ *.cub file
 
