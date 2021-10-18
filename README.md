@@ -10,6 +10,8 @@ $> make
 $> ./cub3d maps/map_1.cub
 
 Editing map : You can change the entire game environment in maps/ *.cub file
+
+
 ![Screenshot 2021-10-18 at 12 30 43 PM](https://user-images.githubusercontent.com/43143962/137714681-0b04cead-403a-43ec-8126-9315272f4717.png)
 
 
@@ -20,6 +22,7 @@ Editing map : You can change the entire game environment in maps/ *.cub file
 - Save a rendered image in bmp format : second argument is "--save"
 
 > $> ./cub3d maps/map_1.cub --save
+
 
 
 Ressource:
